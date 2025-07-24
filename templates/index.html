@@ -11,16 +11,21 @@
     <h1>MizChat Template is born !</h1>
     <input type="text" id="txt">
     <button id="btn">send</button>
+    <div id="messages"></div>
     <script>
         let socket = io();
         const btn = document.getElementById("btn");
         const txt = document.getElementById("txt");
+        const messages = document.getElementById("messages");
         btn.onclick = () => {
-            socket.emit("test", txt.value);
+            socket.emit("msg", txt.value);
         }
 
-        socket.on("msg", (data) => {
-            alert(data);
+        socket.on("messages", (data) => {
+            messages.innerHTML = '';
+            data.forEach(msg => {
+                messages.innerHTML += `<p>${msg}</p>`;
+            });
         })
     </script>
 </body>
