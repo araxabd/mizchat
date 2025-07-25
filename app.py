@@ -2,7 +2,7 @@ from flask import Flask, render_template
 from flask_socketio import SocketIO, emit
 from dotenv import dotenv_values
 
-from db import init, save_msg, get_all_msg
+import db
 
 app = Flask(__name__)
 
@@ -14,7 +14,7 @@ app.config["SECRET_KEY"] = conf["SECRET_KEY"] # Set < Secret Key > based on the 
 ws = SocketIO(app)
 
 # Initialize database
-init()
+db.init()
 
 
 @app.route('/')
@@ -25,8 +25,8 @@ def home():
 @ws.on('msg')
 def message(data):
     print(f'{data} is received')
-    save_msg(data)
-    emit("messages", get_all_msg(), broadcast=True)
+    db.save_msg(data)
+    emit("messages", db.get_all_msg(), broadcast=True)
 
 if __name__ == '__main__':
     ws.run(app, '0.0.0.0', debug=True)
