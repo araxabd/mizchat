@@ -21,23 +21,44 @@ def init():
     room TEXT NOT NULL,
     time DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user) REFRENCES users (id));""")
-    
+
     conn.commit()
     conn.close()
 
 
-def save_msg(msg):
+def save_msg(msg, user_id, room):
     conn = sqlite3.connect(db_url)
     cur = conn.cursor()
-    cur.execute(f"INSERT INTO messages VALUES ('{msg}');")
+    cur.execute("INSERT INTO messages VALUES (?, ?, ?);", (msg, user_id, room))
     conn.commit()
     conn.close()
 
 
-def get_all_msg():
+def get_user(username):
     conn = sqlite3.connect(db_url)
     cur = conn.cursor()
-    cur.execute("SELECT * FROM messages;")
-    messages = cur.fetchall()
+    cur.execute("SELECT id, passhash FROM users WHERE username=?;", (username, ))
+    user = cur.fetchone()
     conn.close()
-    return [i[0] for i in messages]
+    return user
+
+
+def set_user(username, hashed_password):
+    conn = sqlite3.connect(db_url)
+    cur = conn.cursor()
+    cur.execute("INSERT INTO users VALUES (?, ?);", username, hashed_password)
+    conn.close()
+
+
+def get_room_messages(room, limit=20):
+    conn = sqlite3.connect(db_url)
+    cur = conn.cursor()
+    cur.execute("""SELECT users.username, messages.text, messages.time 
+    FROM messages INNER JOIN users ON messages.user=users.id 
+    WHERE messages.room = ? 
+    ORDER BY messages.time DESC 
+    LIMIT ?;""", (room, limit))
+    content = cur.fetchall()
+    conn.close()
+    return [{'user': msg[0], 'txt': msg[1], 'time': msg[2]} for msg in content]
+
