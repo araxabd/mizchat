@@ -1,11 +1,7 @@
 
 let socket = io();
-const btn = document.getElementById("btn");
-const txt = document.getElementById("txt");
 const messages = document.getElementById("messages");
-btn.onclick = () => {
-    socket.emit("msg", txt.value);
-}
+
 
 socket.on("messages", (data) => {
     messages.innerHTML = '';
@@ -13,3 +9,10 @@ socket.on("messages", (data) => {
         messages.innerHTML += `<p>${msg}</p>`;
     });
 })
+
+
+const btn = document.getElementById("btn");
+const txt = document.getElementById("txt");
+btn.onclick = () => {
+    socket.emit("msg", txt.value);
+}

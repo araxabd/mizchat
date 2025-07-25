@@ -26,7 +26,7 @@ def home():
 def message(data):
     print(f'{data} is received')
     save_msg(data)
-    emit("messages", get_all_msg())
+    emit("messages", get_all_msg(), broadcast=True)
 
 if __name__ == '__main__':
-    ws.run(app, debug=True)
+    ws.run(app, '0.0.0.0', debug=True)
