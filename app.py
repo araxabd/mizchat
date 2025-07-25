@@ -11,7 +11,7 @@ conf = dotenv_values('.env')
 app.config["SECRET_KEY"] = conf["SECRET_KEY"] # Set < Secret Key > based on the environment
 
 # Start WebSocket
-ws = SocketIO(app)
+ws = SocketIO(app, cors_allowed_origins="*")
 
 # Initialize database
 db.init()
