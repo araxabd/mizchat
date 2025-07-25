@@ -1,9 +1,11 @@
 import sqlite3
+from dotenv import dotenv_values
 
-DATABASE_ADDRESS = './db.sqlite3'
+conf = dotenv_values('.env')
+db_url = conf["DATABASE_URL"]
 
 def init():
-    conn = sqlite3.connect(DATABASE_ADDRESS)
+    conn = sqlite3.connect(db_url)
     cur = conn.cursor()
     cur.execute("CREATE TABLE IF NOT EXISTS messages (context TEXT);")
     conn.commit()
@@ -11,7 +13,7 @@ def init():
 
 
 def save_msg(msg):
-    conn = sqlite3.connect(DATABASE_ADDRESS)
+    conn = sqlite3.connect(db_url)
     cur = conn.cursor()
     cur.execute(f"INSERT INTO messages VALUES ('{msg}');")
     conn.commit()
@@ -19,7 +21,7 @@ def save_msg(msg):
 
 
 def get_all_msg():
-    conn = sqlite3.connect(DATABASE_ADDRESS)
+    conn = sqlite3.connect(db_url)
     cur = conn.cursor()
     cur.execute("SELECT * FROM messages;")
     messages = cur.fetchall()
