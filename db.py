@@ -34,10 +34,19 @@ def save_msg(msg, user_id, room):
     conn.close()
 
 
-def get_user(username):
+def get_user_by_username(username):
     conn = sqlite3.connect(db_url)
     cur = conn.cursor()
     cur.execute("SELECT id, passhash FROM users WHERE username=?;", (username, ))
+    user = cur.fetchone()
+    conn.close()
+    return user
+
+
+def get_user_by_id(id):
+    conn = sqlite3.connect(db_url)
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM users WHERE id = ?", (id, ))
     user = cur.fetchone()
     conn.close()
     return user
