@@ -9,7 +9,7 @@ def init():
     cur = conn.cursor()
 
     cur.execute("""CREATE TABLE IF NOT EXISTS users
-    (id INTEGER PRIMARY KEY AUTOINCREMENT
+    (id INTEGER PRIMARY KEY AUTOINCREMENT,
     username TEXT UNIQUE NOT NULL,
     passhash TEXT NOT NULL);
     """)
@@ -20,7 +20,7 @@ def init():
     user INTEGER NOT NULL,
     room TEXT NOT NULL,
     time DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user) REFRENCES users (id));""")
+    FOREIGN KEY (user) REFERENCES users (id));""")
 
     conn.commit()
     conn.close()
@@ -37,16 +37,16 @@ def save_msg(msg, user_id, room):
 def get_user_by_username(username):
     conn = sqlite3.connect(db_url)
     cur = conn.cursor()
-    cur.execute("SELECT id, passhash FROM users WHERE username=?;", (username, ))
+    cur.execute("SELECT * FROM users WHERE username=?;", (username, ))
     user = cur.fetchone()
     conn.close()
     return user
 
 
-def get_user_by_id(id):
+def get_user_by_id(user_id):
     conn = sqlite3.connect(db_url)
     cur = conn.cursor()
-    cur.execute("SELECT * FROM users WHERE id = ?", (id, ))
+    cur.execute("SELECT * FROM users WHERE id = ?", (user_id, ))
     user = cur.fetchone()
     conn.close()
     return user
@@ -55,7 +55,8 @@ def get_user_by_id(id):
 def set_user(username, hashed_password):
     conn = sqlite3.connect(db_url)
     cur = conn.cursor()
-    cur.execute("INSERT INTO users VALUES (?, ?);", username, hashed_password)
+    cur.execute("INSERT INTO users (username, passhash) VALUES (?, ?);", (username, hashed_password))
+    conn.commit()
     conn.close()
 
 
