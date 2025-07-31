@@ -21,31 +21,13 @@ conf = dotenv_values('.env')
 app.config["SECRET_KEY"] = conf["SECRET_KEY"] # Set < Secret Key > based on the environment
 # CORS Configurations
 app.config["CORS_SUPPORTS_CREDENTIALS"] = True
-CORS(app, supports_credentials=True, origins=["http://localhost:5000", "http://192.168.1.81:5000"])
+CORS(app, supports_credentials=True, origins=["http://localhost:8000", "http://192.168.1.81:5000"])
 
 # Start WebSocket
 ws = SocketIO(app, cors_allowed_origins="*")
 
 # Initialize database
 db.init()
-
-
-
-
-# Temporary
-@app.route('/')
-def home():
-    return render_template("index.html")
-
-# Temporary
-@app.route('/loginpage')
-def loginpage():
-    return render_template("login.html")
-
-# Temporary
-@app.route('/signuppage')
-def signuppage():
-    return render_template("signup.html")
 
 # Temporary
 @app.route('/getusername')
@@ -61,7 +43,6 @@ def get_username():
         return jsonify({"err": "Token expired"})
     except jwt.InvalidTokenError:
         return jsonify({"err": "Token is invalid"})
-
 
 
 

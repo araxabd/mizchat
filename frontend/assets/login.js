@@ -4,7 +4,7 @@ const usrnameInput = document.getElementById("username");
 const passwdInput = document.getElementById("password");
 
 loginBtn.addEventListener("click", async () => {
-    const res = await fetch("/login", {
+    const res = await fetch("http://localhost:5000/login", {
         method: "POST",
         credentials: "include",
         headers: {"Content-Type": "application/json"},
@@ -12,17 +12,17 @@ loginBtn.addEventListener("click", async () => {
     });
 
     if (res.ok) {
-        window.location.href = "/";
+        window.location.href = "index.html";
     } else {
         alert("Wrong!!");
     }
 });
 
 logoutBtn.addEventListener("click", async () => {
-    await fetch("/logout", {
+    await fetch("http://localhost:5000/logout", {
         method: "POST",
         credentials: "include"
     });
-    window.location.href = "/";
+    window.location.href = "index.html";
 });
 
