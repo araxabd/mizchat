@@ -4,7 +4,7 @@ const usrnameInput = document.getElementById("username");
 const passwdInput = document.getElementById("password");
 
 loginBtn.addEventListener("click", async () => {
-    const res = await fetch("http://localhost:5000/login", {
+    const res = await fetch(`${DOMAIN}/login`, {
         method: "POST",
         credentials: "include",
         headers: {"Content-Type": "application/json"},
@@ -19,7 +19,7 @@ loginBtn.addEventListener("click", async () => {
 });
 
 logoutBtn.addEventListener("click", async () => {
-    await fetch("http://localhost:5000/logout", {
+    await fetch(`${DOMAIN}/logout`, {
         method: "POST",
         credentials: "include"
     });

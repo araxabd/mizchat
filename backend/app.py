@@ -93,7 +93,19 @@ def signup():
         return jsonify({"success": False, "err": "Username is taken"}), 400
 
 
-
+@app.route('/is-authenticated', methods=["GET"])
+def auth_verification():
+    tk = request.cookies.get("token")
+    if not tk:
+        return jsonify({"authenticated": False, "err": "No token"}), 401
+    
+    try:
+        pl = jwt.decode(tk, app.config["SECRET_KEY"], algorithms=["HS256"])
+        return jsonify({"authenticated": True, "user_id": pl["user_id"]})
+    except jwt.ExpiredSignatureError:
+        return jsonify({"authenticated": False, "err": "Token expired"}), 401
+    except jwt.InvalidTokenError:
+        return jsonify({"authenticated": False, "err": "Invalid token"}), 401
 
 # @ws.on('msg')
 # def message(data):

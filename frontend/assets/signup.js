@@ -3,7 +3,7 @@ const usrnameInput = document.getElementById("username");
 const passwdInput = document.getElementById("password");
 
 signupBtn.addEventListener("click", async () => {
-    const res = await fetch("http://localhost:5000/signup", {
+    const res = await fetch(`${DOMAIN}/signup`, {
         method: "POST",
         credentials: "include",
         headers: {"Content-Type": "application/json"},
