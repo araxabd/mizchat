@@ -12,7 +12,7 @@ loginBtn.addEventListener("click", async () => {
     });
 
     if (res.ok) {
-        window.location.href = "index.html";
+        window.location.href = "/";
     } else {
         alert("Wrong!!");
     }

@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    background-color: #A8BBA3;
+    color: #F7F4EA;
+}
+
+h1 {
+    text-shadow: 2px 2px 2px black;
+    text-align: center;
+    padding-top: 2rem;
+    font-family: "Epunda Slab", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+#actions > button {
+    background-color: #B87C4C;
+    color: #EBD9D1;
+    padding: 1rem;
+    width: 50%;
+    display: block;
+    margin: 1rem auto;
+    border-radius: 1rem;
+    border-color: #EBD9D1;
+    font-family: "Epunda Slab", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-size: 1.5rem;
+    font-style: normal;
+    cursor: pointer;
+}
+
+#actions > button:hover {
+    box-shadow: 2px 2px 2px black;
+}
