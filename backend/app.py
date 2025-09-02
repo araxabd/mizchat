@@ -1,5 +1,5 @@
 from datetime import datetime, timedelta
-from flask import Flask, render_template, request, make_response, jsonify
+from flask import Flask, request, make_response, jsonify
 from flask_socketio import SocketIO, emit
 from flask_bcrypt import Bcrypt
 from flask_cors import CORS
