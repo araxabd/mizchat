@@ -10,7 +10,7 @@ signupBtn.addEventListener("click", async () => {
         body: JSON.stringify({username: usrnameInput.value, password: passwdInput.value})
     });
     if(res.ok) {
-        window.location.href = "login.html";
+        window.location.href = "/login";
     } else {
         alert("Username is taken");
     }

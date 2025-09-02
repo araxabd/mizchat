@@ -23,6 +23,6 @@ logoutBtn.addEventListener("click", async () => {
         method: "POST",
         credentials: "include"
     });
-    window.location.href = "index.html";
+    window.location.href = "/";
 });
 

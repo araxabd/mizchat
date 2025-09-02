@@ -30,7 +30,7 @@ console.log(authStatus)
         if (authStatus.err) {
             console.log(authStatus.err);
         }
-        window.location.href = "/login.html";
+        window.location.href = "/login";
     }
 });
 
