@@ -1,3 +1,11 @@
+:root {
+    --white: #F7F4EA;
+    --brown: #B87C4C;
+    --pink: #EBD9D1;
+    --green: #A8BBA3;
+}
+
+
 * {
     margin: 0;
     padding: 0;
@@ -5,37 +13,151 @@
 
 html,
 body {
-    background-color: #A8BBA3;
-    color: #F7F4EA;
+    background-color: var(--green);
+    color: var(--white);
+    font-family: "Epunda Slab", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
 }
 
 h1 {
     text-shadow: 2px 2px 2px black;
     text-align: center;
     padding-top: 2rem;
-    font-family: "Epunda Slab", serif;
-    font-optical-sizing: auto;
     font-weight: 400;
-    font-style: normal;
 }
 
 #actions > button {
-    background-color: #B87C4C;
-    color: #EBD9D1;
+    background-color: var(--brown);
+    color: var(--pink);
     padding: 1rem;
     width: 50%;
     display: block;
     margin: 1rem auto;
     border-radius: 1rem;
-    border-color: #EBD9D1;
-    font-family: "Epunda Slab", serif;
-    font-optical-sizing: auto;
+    border-color: var(--pink);
     font-weight: 500;
     font-size: 1.5rem;
-    font-style: normal;
     cursor: pointer;
 }
 
 #actions > button:hover {
+    box-shadow: 2px 2px 2px black;
+}
+
+#shadow {
+    background-color: black;
+    opacity: 30%;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: none;
+}
+
+#createmodal {
+    background-color: var(--white);
+    position: fixed;
+    right: 10%;
+    left: 10%;
+    top: 20%;
+    bottom: 20%;
+    border-radius: 1rem;
+    text-align: center;
+    color: var(--brown);
+    padding-top: 4rem;
+    display: none;
+}
+
+#createmodal > input {
+    display: block;
+    margin: 0 auto;
+    width: 50%;
+    padding: 0.5em;
+    border-radius: 0.3rem;
+}
+
+#createmodal > button {
+    display: block;
+    margin: 0 auto;
+}
+
+#createclose {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: none;
+    border: none;
+    padding: 1rem;
+    font-size: 2rem;
+    color: var(--brown);
+    cursor: pointer;
+}
+
+#newroombtn {
+    width: 50%;
+    padding: 0.5em;
+    background: var(--brown);
+    color: var(--white);
+    border-radius: 0.5rem;
+    border-color: var(--pink);
+    cursor: pointer;
+}
+
+#newroombtn:hover {
+    box-shadow: 2px 2px 2px black;
+}
+
+#joinmodal {
+    background-color: var(--white);
+    position: fixed;
+    right: 10%;
+    left: 10%;
+    top: 20%;
+    bottom: 20%;
+    border-radius: 1rem;
+    text-align: center;
+    color: var(--brown);
+    padding-top: 4rem;
+    display: none;
+}
+
+#joinmodal > input {
+    display: block;
+    margin: 0 auto;
+    width: 50%;
+    padding: 0.5em;
+    border-radius: 0.3rem;
+}
+
+#joinmodal > button {
+    display: block;
+    margin: 0 auto;
+}
+
+#joinclose {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: none;
+    border: none;
+    padding: 1rem;
+    font-size: 2rem;
+    color: var(--brown);
+    cursor: pointer;
+}
+
+#joinroombtn {
+    width: 50%;
+    padding: 0.5em;
+    background: var(--brown);
+    color: var(--white);
+    border-radius: 0.5rem;
+    border-color: var(--pink);
+    cursor: pointer;
+}
+
+#joinroombtn:hover {
     box-shadow: 2px 2px 2px black;
 }

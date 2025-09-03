@@ -18,8 +18,24 @@
     <div id="messages"></div> -->
 
     <div id="actions">
-        <button>Create a Miz</button>
-        <button>Join a Miz</button>
+        <button id="createbtn">Create a Miz</button>
+        <button id="joinbtn">Join a Miz</button>
+    </div>
+
+    <div id="shadow"></div>
+    <div id="createmodal">
+        <button id="createclose">&times;</button>
+        <input type="text" id="newroomname" placeholder="Enter new MizName">
+        (a name for the chatroom you want to create)
+        <input type="text" id="newroommsg" placeholder="Enter your first message">
+        (the first message you want to send in your room)
+        <button id="newroombtn">Create the chatroom</button>
+    </div>
+    <div id="joinmodal">
+        <button id="joinclose">&times;</button>
+        Enter the name of the chatroom you want to join :
+        <input type="text" id="roomname" placeholder="MizName ...">
+        <button id="joinroombtn">Join the chatroom</button>
     </div>
     
     <script src="./assets/env.js"></script>    

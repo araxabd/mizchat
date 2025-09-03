@@ -34,6 +34,38 @@ console.log(authStatus)
     }
 });
 
+
+const openCreateModal = document.getElementById("createbtn");
+const closeCreateModal = document.getElementById("createclose");
+const openJoinModal = document.getElementById("joinbtn");
+const closeJoinModal = document.getElementById("joinclose");
+const shadowBox = document.getElementById("shadow");
+const createModal = document.getElementById("createmodal");
+const joinModal = document.getElementById("joinmodal");
+
+
+openCreateModal.addEventListener("click", () => {
+    shadowBox.style.display = "block";
+    createModal.style.display = "block";
+});
+
+closeCreateModal.addEventListener("click", () => {
+    shadowBox.style.display = "none";
+    createModal.style.display = "none";
+});
+
+
+openJoinModal.addEventListener("click", () => {
+    shadowBox.style.display = "block";
+    joinModal.style.display = "block";
+});
+
+closeJoinModal.addEventListener("click", () => {
+    shadowBox.style.display = "none";
+    joinModal.style.display = "none";
+});
+
+
 // let socket = io();
 // const messages = document.getElementById("messages");
 
